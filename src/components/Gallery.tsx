@@ -3,8 +3,14 @@ import type { ImagesResults } from "@/models/Images";
 import ImgContainer from "./ImgContainer";
 import addBlurredDataUrls from "@/lib/getBase64";
 
-export default async function Gallery() {
-  const url = "https://api.pexels.com/v1/curated";
+type Props = {
+  term?: string | undefined;
+};
+
+export default async function Gallery({ term }: Props) {
+  const url = !term
+    ? "https://api.pexels.com/v1/curated"
+    : `https://api.pexels.com/v1/search?query=${term}`;
   const images: ImagesResults | undefined = await fetchImages(url);
 
   if (!images)
@@ -13,7 +19,7 @@ export default async function Gallery() {
   const photosWithBlur = await addBlurredDataUrls(images);
 
   return (
-    <section className="px-2 my-3 grid gap-2 grid-cols-gallery">
+    <section className="px-1 my-3 grid grid-cols-gallery auto-rows-[10px]">
       {photosWithBlur.map((photo) => (
         <ImgContainer key={photo.id} photo={photo} />
       ))}
