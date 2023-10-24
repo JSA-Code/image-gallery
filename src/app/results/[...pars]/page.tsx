@@ -2,14 +2,14 @@ import Gallery from "@/components/Gallery";
 
 type Props = {
   params: {
-    myParams: (string | undefined)[];
+    pars: (string | undefined)[];
   };
 };
 
-export function generateMetadata({ params: { myParams } }: any) {
+export function generateMetadata({ params: { pars } }: any) {
   // console.log(`PARAMS META: ${JSON.stringify(myParams)}`);
-  const term = myParams?.[0] ?? "curated";
-  const page = myParams?.[1] ?? "1";
+  const term = pars?.[0] ?? "curated";
+  const page = pars?.[1] ?? "1";
   // console.log(`item: ${page}`);
 
   return {
@@ -17,10 +17,10 @@ export function generateMetadata({ params: { myParams } }: any) {
   };
 }
 
-export default function searchResults({ params: { myParams } }: Props) {
+export default function searchResults({ params: { pars } }: Props) {
   // console.log(`PARAMS PAGE: ${myParams}`);
-  const term = myParams?.[0] ?? "curated";
-  const page = myParams?.[1] ?? "1";
+  const term = pars?.[0] ?? "curated";
+  const page = pars?.[1] ?? "1";
 
   return <Gallery term={term} page={page} />;
 }

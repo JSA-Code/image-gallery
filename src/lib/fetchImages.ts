@@ -15,9 +15,11 @@ export default async function fetchImages(
     }
 
     const imagesResults: ImagesResults = await response.json();
-    // console.log(imagesResults);
+    // console.log(`IMAGES RESULTS: ${JSON.stringify(imagesResults, null, 2)}`);
 
+    // parses data to conform to the zod schema
     const parsedData = ImagesPhotosSchema.parse(imagesResults);
+    // console.log(`PARSED DATA:\n${JSON.stringify(parsedData, null, 2)}`);
 
     if (parsedData.total_results === 0) {
       return undefined;

@@ -12,17 +12,17 @@ type Props = {
 
 export default async function Gallery({ term = "curated", page }: Props) {
   let url;
-  if (term === "curated" && page) {
-    // browsing past home
-    url = `https://api.pexels.com/v1/curated?page=${page}`;
-  } else if (term === "curated") {
+  if (term === "curated" && !page) {
     // home
     url = `https://api.pexels.com/v1/curated`;
+  } else if (term === "curated" && page) {
+    // home browsing
+    url = `https://api.pexels.com/v1/curated?page=${page}`;
   } else if (!page) {
-    // first page search results
+    // search
     url = `https://api.pexels.com/v1/search?query=${term}`;
   } else {
-    // past first page search results
+    // search browsing
     url = `https://api.pexels.com/v1/search?query=${term}&page=${page}`;
   }
   const images: ImagesResults | undefined = await fetchImages(url);
@@ -32,10 +32,9 @@ export default async function Gallery({ term = "curated", page }: Props) {
   }
 
   const photosWithBlur = await addBlurredDataUrls(images);
-  // console.log(images);
   const { prevPage, nextPage } = getPrevNextPages(images);
-  // console.log(`PREV PAGE IN GALLERY ${prevPage}`);
   const footerProps = { term, page, prevPage, nextPage };
+  // console.log(`PREV PAGE IN GALLERY ${prevPage}`);
 
   return (
     <>
