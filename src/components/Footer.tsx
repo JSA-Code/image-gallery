@@ -26,7 +26,7 @@ export default function Footer({ term, page, prevPage, nextPage }: Props) {
       href={`/results/${term}/${nextPage}`}
       className={!prevPage ? "mx-auto" : ""}
     >
-      {!prevPage ? "more" : null} &gt;&gt;&gt;
+      {!prevPage ? "more" : null} &gt;
     </Link>
   ) : null;
 
@@ -36,7 +36,7 @@ export default function Footer({ term, page, prevPage, nextPage }: Props) {
         href={`/results/${term}/${prevPage}`}
         className={!nextPage ? "mx-auto" : ""}
       >
-        &lt;&lt;&lt; {!nextPage ? "back" : null}
+        &lt; {!nextPage ? "back" : null}
       </Link>
 
       {pageNums.map((num, i) =>
@@ -52,7 +52,7 @@ export default function Footer({ term, page, prevPage, nextPage }: Props) {
   ) : null;
 
   return (
-    <footer className="flex flex-row justify-between items-center px-2 py-4 font-bold w-60 mx-auto">
+    <footer className="flex flex-row justify-between items-center px-2 py-4 font-bold text-xl xl:text-lg w-60 mx-auto">
       {prevPageArea}
       {nextPageArea}
     </footer>

@@ -8,6 +8,12 @@ export default function Navbar() {
         <h1 className="text-2xl sm:text-3xl text-center whitespace-nowrap">
           <Link href="/">Image Gallery</Link>
         </h1>
+        <h1 className="text-xl text-center">
+          <Link href="/">Pagination</Link>
+        </h1>
+        <h1 className="text-xl text-center whitespace-nowrap">
+          <Link href="/infinite-scroll">Infinite Scroll</Link>
+        </h1>
         <Search />
       </nav>
     </header>
