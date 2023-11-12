@@ -56,7 +56,7 @@ export default function InfiniteScrollImages({ initialPhotos, term }: Props) {
 
       <div
         ref={ref}
-        className="col-span-1 mt-16 flex items-center justify-center sm:col-span-2 md:col-span-3 lg:col-span-4"
+        className="col-span-1 mt-16 mb-10 flex items-center justify-center sm:col-span-2 md:col-span-3 lg:col-span-4"
       >
         <svg
           aria-hidden="true"
