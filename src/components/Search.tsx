@@ -13,6 +13,8 @@ export default function Search() {
     const last = pathname.split("/").pop();
     if (last === "pagination" || last === "infinite-scroll") {
       routeType.current = last;
+    } else if (!last) {
+      routeType.current = "infinite-scroll";
     }
   }, [pathname]);
 
