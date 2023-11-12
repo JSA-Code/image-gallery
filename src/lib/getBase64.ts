@@ -1,3 +1,5 @@
+"use server";
+
 import { getPlaiceholder } from "plaiceholder";
 import type { Photo, ImagesResults } from "@/models/Images";
 

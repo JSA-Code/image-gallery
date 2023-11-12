@@ -1,5 +1,9 @@
-import Gallery from "@/components/Gallery";
-
 export default function Home() {
-  return <Gallery />;
+  return (
+    <section>
+      <h1 className="text-center font-bold text-2xl mt-12">
+        Image Gallery with Pagination or Infinite Scroll
+      </h1>
+    </section>
+  );
 }

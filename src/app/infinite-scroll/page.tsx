@@ -1,5 +1,5 @@
-import Gallery from "@/components/Gallery";
+import InfiniteGallery from "@/components/InfiniteGallery";
 
-export default function InfiniteScroll() {
-  return <Gallery />;
+export default function Home() {
+  return <InfiniteGallery />;
 }

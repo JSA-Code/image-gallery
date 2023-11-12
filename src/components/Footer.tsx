@@ -8,7 +8,6 @@ type Props = {
 };
 
 export default function Footer({ term, page, prevPage, nextPage }: Props) {
-  // console.log(prevPage);
   if (!prevPage && !nextPage) {
     return;
   }
@@ -23,7 +22,7 @@ export default function Footer({ term, page, prevPage, nextPage }: Props) {
 
   const nextPageArea = nextPage ? (
     <Link
-      href={`/results/${term}/${nextPage}`}
+      href={`/results/pagination/${term}/${nextPage}`}
       className={!prevPage ? "mx-auto" : ""}
     >
       {!prevPage ? "more" : null} &gt;
@@ -33,7 +32,7 @@ export default function Footer({ term, page, prevPage, nextPage }: Props) {
   const prevPageArea = prevPage ? (
     <>
       <Link
-        href={`/results/${term}/${prevPage}`}
+        href={`/results/pagination/${term}/${prevPage}`}
         className={!nextPage ? "mx-auto" : ""}
       >
         &lt; {!nextPage ? "back" : null}
@@ -43,7 +42,11 @@ export default function Footer({ term, page, prevPage, nextPage }: Props) {
         page && num === parseInt(page) ? (
           <span key={i}>{num}</span>
         ) : (
-          <Link key={i} href={`/results/${term}/${num}`} className="underline">
+          <Link
+            key={i}
+            href={`/results/pagination/${term}/${num}`}
+            className="underline"
+          >
             {num}
           </Link>
         )

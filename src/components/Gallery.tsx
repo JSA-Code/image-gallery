@@ -6,23 +6,23 @@ import getPrevNextPages from "@/lib/getPrevNextPages";
 import Footer from "./Footer";
 
 type Props = {
-  term?: string | undefined;
   page?: string | undefined;
+  term?: string | undefined;
 };
 
-export default async function Gallery({ term = "curated", page }: Props) {
+export default async function Gallery({ page, term = "curated" }: Props) {
   let url;
   if (term === "curated" && !page) {
     // home
     url = `https://api.pexels.com/v1/curated`;
   } else if (term === "curated" && page) {
-    // home browsing
+    // home next page
     url = `https://api.pexels.com/v1/curated?page=${page}`;
   } else if (!page) {
     // search
     url = `https://api.pexels.com/v1/search?query=${term}`;
   } else {
-    // search browsing
+    // search next page
     url = `https://api.pexels.com/v1/search?query=${term}&page=${page}`;
   }
   const images: ImagesResults | undefined = await fetchImages(url);

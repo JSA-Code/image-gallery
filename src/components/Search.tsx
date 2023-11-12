@@ -1,15 +1,24 @@
 "use client";
 
-import { useState, FormEvent } from "react";
-import { useRouter } from "next/navigation";
+import { useState, FormEvent, useRef, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Search() {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>("");
   const router = useRouter();
+  const pathname = usePathname();
+  const routeType = useRef<string | undefined>();
+
+  useEffect(() => {
+    const last = pathname.split("/").pop();
+    if (last === "pagination" || last === "infinite-scroll") {
+      routeType.current = last;
+    }
+  }, [pathname]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (search) router.push(`/results/${search}`);
+    if (search) router.push(`/results/${routeType.current}/${search}`);
     setSearch("");
   };
 

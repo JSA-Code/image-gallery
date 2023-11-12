@@ -1,4 +1,5 @@
 import Gallery from "@/components/Gallery";
+import InfiniteGallery from "@/components/InfiniteGallery";
 
 type Props = {
   params: {
@@ -6,11 +7,9 @@ type Props = {
   };
 };
 
-export function generateMetadata({ params: { pars } }: any) {
-  // console.log(`PARAMS META: ${JSON.stringify(myParams)}`);
-  const term = pars?.[0] ?? "curated";
-  const page = pars?.[1] ?? "1";
-  // console.log(`item: ${page}`);
+export function generateMetadata({ params: { pars } }: Props) {
+  const term = pars?.[1] ?? "curated";
+  const page = pars?.[2] ?? "1";
 
   return {
     title: `Results for ${term} - Page ${page}`,
@@ -18,9 +17,13 @@ export function generateMetadata({ params: { pars } }: any) {
 }
 
 export default function searchResults({ params: { pars } }: Props) {
-  // console.log(`PARAMS PAGE: ${myParams}`);
-  const term = pars?.[0] ?? "curated";
-  const page = pars?.[1] ?? "1";
+  const routeType = pars?.[0];
+  const term = pars?.[1] ?? "curated";
+  const page = pars?.[2] ?? "1";
 
-  return <Gallery term={term} page={page} />;
+  if (routeType === "pagination") {
+    return <Gallery term={term} page={page} />;
+  } else if (routeType === "infinite-scroll") {
+    return <InfiniteGallery term={term} />;
+  }
 }

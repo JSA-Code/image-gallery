@@ -9,7 +9,7 @@ export default function Navbar() {
           <Link href="/">Image Gallery</Link>
         </h1>
         <h1 className="text-xl text-center">
-          <Link href="/">Pagination</Link>
+          <Link href="/pagination">Pagination</Link>
         </h1>
         <h1 className="text-xl text-center whitespace-nowrap">
           <Link href="/infinite-scroll">Infinite Scroll</Link>
